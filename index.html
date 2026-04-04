@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spam Shield</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0f1e;
+            color: white;
+        }
+
+        /* Header */
+        .header {
+            background: #0d1526;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e2d4a;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .logo p {
+            color: #4a9eff;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 15px;
+        }
+
+        .stat-box {
+            background: #1a2744;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #1e3a6e;
+        }
+
+        .stat-box span {
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            color: #4a9eff;
+        }
+
+        .stat-box p {
+            color: #8899aa;
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        /* Main */
+        .main {
+            max-width: 750px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1a2744;
+            color: #4a9eff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border: 1px solid #1e3a6e;
+        }
+
+        .main-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .main-title span {
+            color: #4a9eff;
+        }
+
+        .main-desc {
+            color: #8899aa;
+            font-size: 15px;
+            margin-bottom: 35px;
+        }
+
+        /* Card */
+        .card {
+            background: #0d1526;
+            border-radius: 16px;
+            padding: 35px;
+            border: 1px solid #1e2d4a;
+        }
+
+        textarea {
+            width: 100%;
+            height: 160px;
+            padding: 15px;
+            border: 1px solid #1e3a6e;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            resize: none;
+            color: white;
+            background: #0a0f1e;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            border-color: #4a9eff;
+            box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
+        }
+
+        textarea::placeholder {
+            color: #445566;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 15px;
+            background: #4a9eff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            background: #3a8ef0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(74, 158, 255, 0.3);
+        }
+
+        /* Result */
+        .result-spam {
+            margin-top: 25px;
+            padding: 20px 25px;
+            background: rgba(255, 99, 99, 0.08);
+            border: 1px solid rgba(255, 99, 99, 0.3);
+            border-radius: 12px;
+            animation: popIn 0.4s ease;
+        }
+
+        .result-spam h3 {
+            color: #ff6363;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .result-spam p {
+            color: #8899aa;
+            font-size: 14px;
+        }
+
+        .result-ham {
+            margin-top: 25px;
+            padding: 20px 25px;
+            background: rgba(74, 222, 128, 0.08);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 12px;
+            animation: popIn 0.4s ease;
+        }
+
+        .result-ham h3 {
+            color: #4ade80;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .result-ham p {
+            color: #8899aa;
+            font-size: 14px;
+        }
+
+        @keyframes popIn {
+            0%   { transform: translateY(10px); opacity: 0; }
+            100% { transform: translateY(0);    opacity: 1; }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #445566;
+            font-size: 13px;
+        }
+
+        .footer span {
+            color: #4a9eff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <div>
+                <h1>🛡️ Spam Shield</h1>
+                <p>AI Powered Detection</p>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat-box">
+                <span>98%</span>
+                <p>Accuracy</p>
+            </div>
+            <div class="stat-box">
+                <span>5572</span>
+                <p>Trained On</p>
+            </div>
+            <div class="stat-box">
+                <span>NB</span>
+                <p>Algorithm</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+        <div class="badge">🤖 AI Powered</div>
+        <h2 class="main-title">Detect <span>Spam</span> Instantly</h2>
+        <p class="main-desc">Paste any message or email below — our AI will analyze it in seconds.</p>
+
+        <div class="card">
+            <form action="/predict" method="post">
+                <textarea name="message" placeholder="Paste your message here..."></textarea>
+                <button type="submit">🔍 Analyze Message</button>
+            </form>
+
+            {% if result == "spam" %}
+                <div class="result-spam">
+                    <h3>🚨 SPAM Detected!</h3>
+                    <p>This message appears to be spam. Be careful!</p>
+                </div>
+            {% elif result == "ham" %}
+                <div class="result-ham">
+                    <h3>✅ Message is Safe!</h3>
+                    <p>This message appears to be legitimate.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="footer">
+            Built with <span>Naive Bayes & Flask</span> — By <span>Wajid Ali</span>
+        </div>
+    </div>
+
+</body>
+</html>
